@@ -17,3 +17,12 @@ class DataFrameReporter:
         # Защита от деления на 0 на случай пустого DF
         duplicates_share = duplicates / df.shape[0] if df.shape[0] > 0 else 0.0
         print('Доля дубликатов:', format(duplicates_share, self.percent_format))
+
+        # Вывод сводной статистики describe
+        print(df.describe(include='all' if self.include_all else None))
+
+        # Количество пропусков во всем датафрейме
+        print('Количество пропусков:', df.isna().sum().sum())
+
+        # Доля пропусков во всем датафрейме в формате float_format
+        print('Доля пропусков:', format(df.isna().mean(axis=None), self.float_format))
