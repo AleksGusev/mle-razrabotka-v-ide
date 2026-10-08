@@ -3,3 +3,6 @@ venv/
 
 # Данные
 data/
+
+# Кэш
+__pycache__/
